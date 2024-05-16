@@ -9,7 +9,13 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import icesi.edu.co.introjetpackcompose.screens.ProfileScreen
+import icesi.edu.co.introjetpackcompose.screens.SignInScreen
+import icesi.edu.co.introjetpackcompose.screens.SignUpScreen
 import icesi.edu.co.introjetpackcompose.ui.theme.IntroJetpackComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,10 +28,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    ProfileScreen()
+                    App()
                 }
             }
         }
+    }
+}
+
+@Composable
+fun App(navController:NavHostController = rememberNavController()){
+    NavHost(navController = navController, startDestination = "signin") {
+        composable("signin") { SignInScreen(navController) }
+        composable("signup") { SignUpScreen(navController) }
+        composable("profile") { ProfileScreen(navController) }
     }
 }
 
@@ -34,6 +49,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GreetingPreview() {
     IntroJetpackComposeTheme {
-
+        App()
     }
 }

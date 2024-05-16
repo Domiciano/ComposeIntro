@@ -13,10 +13,11 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import icesi.edu.co.introjetpackcompose.R
 
 @Composable
-fun ProfileScreen() {
+fun ProfileScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .padding(16.dp)
