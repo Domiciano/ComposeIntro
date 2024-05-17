@@ -37,7 +37,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun App(navController:NavHostController = rememberNavController()){
-    NavHost(navController = navController, startDestination = "signin") {
+    NavHost(navController = navController, startDestination = "profile") {
         composable("signin") { SignInScreen(navController) }
         composable("signup") { SignUpScreen(navController) }
         composable("profile") { ProfileScreen(navController) }

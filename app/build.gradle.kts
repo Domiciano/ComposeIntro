@@ -62,6 +62,8 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("com.google.firebase:firebase-auth:23.0.0")
     implementation("com.google.firebase:firebase-firestore:25.0.0")
+    //Equivalente de Glide
+    implementation("io.coil-kt:coil-compose:2.6.0")
     //El componente de navegación entre pantallas
     implementation("androidx.navigation:navigation-compose:2.7.7")
     //Sirve para observar los MutableLiveData como estados de la aplicación
