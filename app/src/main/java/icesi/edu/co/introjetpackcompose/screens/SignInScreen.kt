@@ -26,11 +26,7 @@ import icesi.edu.co.introjetpackcompose.viewmodel.LoginViewModel
 import icesi.edu.co.introjetpackcompose.viewmodel.SignupViewModel
 
 @Composable
-fun SignInScreen(navController: NavHostController, viewModel: LoginViewModel = viewModel() ) {
-    var email by remember { mutableStateOf("") }
-    var password by remember { mutableStateOf("") }
-
-    val authState by viewModel.authStatus.observeAsState()
+fun SignInScreen() {
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -42,46 +38,32 @@ fun SignInScreen(navController: NavHostController, viewModel: LoginViewModel = v
         Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
-            value = email,
-            onValueChange = { email = it },
+            value = "",
+            onValueChange = {  },
             label = { Text("Correo electrónico") }
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         OutlinedTextField(
-            value = password,
-            onValueChange = { password = it },
+            value = "",
+            onValueChange = {  },
             label = { Text("Contraseña") },
             visualTransformation = PasswordVisualTransformation()
         )
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        authState?.let {
-            when (it) {
-                is AppAuthState.Error -> {
-                    Text(text = "Error: ${it.message}", color = Color.Red)
-                }
-                is AppAuthState.Loading -> {
-                    CircularProgressIndicator()
-                }
-                is AppAuthState.Success -> {
-                    navController.navigate("profile")
-                }
-            }
-        }
+
 
         Button(onClick = {
-            viewModel.login(email, password)
+
         }) {
             Text("Registrarse")
         }
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        Text("No tengo cuenta, quiero resgistrame", color= Color.Blue, modifier = Modifier.clickable {
-            navController.navigate("signup")
-        })
+        Text("No tengo cuenta, quiero resgistrame", color= Color.Blue)
     }
 }
